@@ -228,7 +228,6 @@ class PatientRiskAnalysisPipeline:
             feature_importance = self.classifier.get_feature_importance()
             print(f"\nTop 10 Most Important Features:")
             print(feature_importance.head(10))
-            self.results['classification']['feature_importance'] = feature_importance.to_dict('records')
         
         # Store results
         self.results['classification'] = {
@@ -240,6 +239,10 @@ class PatientRiskAnalysisPipeline:
             'f1_score': metrics['f1_score'],
             'confusion_matrix': metrics['confusion_matrix']
         }
+        
+        # Add feature importance if available
+        if algorithm in ['random_forest', 'gradient_boosting']:
+            self.results['classification']['feature_importance'] = feature_importance.to_dict('records')
         
         if 'roc_auc' in metrics:
             self.results['classification']['roc_auc'] = metrics['roc_auc']
@@ -297,6 +300,13 @@ class PatientRiskAnalysisPipeline:
         filepath : str
             Path to save results
         """
+        import os
+        
+        # Ensure directory exists
+        directory = os.path.dirname(filepath)
+        if directory and not os.path.exists(directory):
+            os.makedirs(directory)
+        
         with open(filepath, 'w') as f:
             json.dump(self.results, f, indent=2, default=str)
         

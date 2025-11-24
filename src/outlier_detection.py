@@ -71,8 +71,15 @@ class OutlierDetector:
         pandas.Series
             Boolean series indicating outliers
         """
-        z_scores = np.abs(stats.zscore(data[column].dropna()))
-        return z_scores > self.threshold
+        # Create a boolean series aligned with the original data index
+        outliers = pd.Series(False, index=data.index)
+        non_null_mask = data[column].notna()
+        
+        if non_null_mask.sum() > 0:
+            z_scores = np.abs(stats.zscore(data.loc[non_null_mask, column]))
+            outliers.loc[non_null_mask] = z_scores > self.threshold
+        
+        return outliers
     
     def fit_transform(self, data, columns=None):
         """

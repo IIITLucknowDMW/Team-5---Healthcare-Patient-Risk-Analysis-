@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-24T14:09:12.239572",
+  "timestamp": "2025-11-24T14:13:32.279400",
   "outlier_detection": {
     "age": "0",
     "sex": "0",
@@ -95,6 +95,60 @@
         1,
         33
       ]
+    ],
+    "feature_importance": [
+      {
+        "feature": "age",
+        "importance": 0.1503307275659034
+      },
+      {
+        "feature": "thalach",
+        "importance": 0.1410456718276871
+      },
+      {
+        "feature": "trestbps",
+        "importance": 0.1376861754838787
+      },
+      {
+        "feature": "cp",
+        "importance": 0.12310031318540847
+      },
+      {
+        "feature": "oldpeak",
+        "importance": 0.1120987230975602
+      },
+      {
+        "feature": "chol",
+        "importance": 0.09606091123689628
+      },
+      {
+        "feature": "exang",
+        "importance": 0.07231161624918506
+      },
+      {
+        "feature": "sex",
+        "importance": 0.06409713477487733
+      },
+      {
+        "feature": "thal",
+        "importance": 0.025724257344857945
+      },
+      {
+        "feature": "ca",
+        "importance": 0.025696283692199187
+      },
+      {
+        "feature": "restecg",
+        "importance": 0.023813446620809007
+      },
+      {
+        "feature": "slope",
+        "importance": 0.018510980155176424
+      },
+      {
+        "feature": "fbs",
+        "importance": 0.00952375876556092
+      }
     ],
     "roc_auc": 0.9558823529411764
   }
