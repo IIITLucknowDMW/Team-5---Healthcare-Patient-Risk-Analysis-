@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+env/
+venv/
+.DS_Store
+# Ignore generated text outputs
+cluster_centers.txt
+metrics.txt
+output.txt
+# We keep images for the report, but if you wanted to ignore them:
+# *.png
